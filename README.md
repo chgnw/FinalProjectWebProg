@@ -17,6 +17,7 @@ Step 4 :
 - Open .env File
 - Edit DB_CONNECTION=mysql
 - Edit DB_NAME=db_name (Optional)
+
 Step 5 : 
 ```cmd
 php artisan migrate
