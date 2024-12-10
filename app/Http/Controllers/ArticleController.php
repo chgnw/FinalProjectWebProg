@@ -22,4 +22,31 @@ class ArticleController extends Controller
 
         return view('search', ['articles' => $result, 'data' => $data]);
     }
+    public function submitarticle(){
+        return view('submitarticle');
+    }
+    public function storearticle(Request $request){
+        $request->validate([
+            'title'=>'required',
+            'short_desc'=>'required',
+            'picture'=>'required',
+            'content'=>'required',
+            'author_id'=>'required',
+            'category_id'=>'required'
+        ]   
+        );
+
+        $article= Article::create([
+            'title'=>$request->title,
+            'short_desc'=>$request->short_desc,
+            'picture'=>$request->picture,
+            'content'=>$request->content,
+            'author_id'=>$request->author_id,
+            'category_id'=>$request->category_id,
+            ]
+            
+        );
+        $article->save();
+        return redirect()->route('dashboard')->with('success','Article Berhasil Di Submit');
+    }
 }

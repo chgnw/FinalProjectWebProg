@@ -5,10 +5,10 @@
         </span>
         <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-text sm:mt-0">
             <li>
-                <a href="#" class="hover:underline me-4 md:me-6">About</a>
+                <a href="{{route('about')}}" class="hover:underline me-4 md:me-6">About</a>
             </li>
             <li>
-                <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+                <a href="{{route('privacypolicy')}}" class="hover:underline me-4 md:me-6">Privacy Policy</a>
             </li>
         </ul>
     </div>

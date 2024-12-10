@@ -8,7 +8,7 @@
             </h1>
             <p class="mb-8 text-lg font-normal lg:text-xl sm:px-16 lg:px-48 text-black">We compile all the education-related articles, so that you can find it easily.</p>
             <div class="space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
-                <a href="#" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-600 hover:bg-blue-800">
+                <a href="{{route('submitarticle')}}" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-600 hover:bg-blue-800">
                     Submit your article
                 </a>
             </div>
