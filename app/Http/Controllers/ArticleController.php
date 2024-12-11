@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Article;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -35,11 +36,11 @@ class ArticleController extends Controller
             'category_id'=>'required'
         ]   
         );
-
+        $path= $request->file('picture')->store('images','public');
         $article= Article::create([
             'title'=>$request->title,
             'short_desc'=>$request->short_desc,
-            'picture'=>$request->picture,
+            'picture'=>Storage::url($path),
             'content'=>$request->content,
             'author_id'=>$request->author_id,
             'category_id'=>$request->category_id,

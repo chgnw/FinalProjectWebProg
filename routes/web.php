@@ -24,11 +24,11 @@ Route::get('/author', function () {
 })->name('show.authors');
 
 Route::get('/about',function(){
-    return view('about');
+    return view('layouts.about');
 })->name('about');
 
 Route::get('/privacypolicy',function(){
-    return view('privacypolicy');
+    return view('layouts.privacypolicy');
 })->name('privacypolicy');
 
 
