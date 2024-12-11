@@ -31,7 +31,7 @@
 
         <div class="mb-4">
             <label for="content" class="block text-lg font-medium text-text">Content*</label>
-            <textarea name="content" id="content" class="mt-1 block w-full border rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500 text-acc">{{ old('content', $article->content) }}</textarea>
+            <textarea name="content" id="content" class="mt-1 block w-full border rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500 text-acc h-60">{{ old('content', $article->content) }}</textarea>
         </div>
 
         <div class="mb-4">

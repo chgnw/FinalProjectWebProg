@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('desc');
-            $table->string('photo');
+            $table->string('photo', 100);
             $table->longText('content');
             $table->string('author');
             $table->foreignId('category_id');

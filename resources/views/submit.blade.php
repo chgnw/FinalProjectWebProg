@@ -19,7 +19,7 @@
 
         <div class="mb-4">
             <label for="content" class="block text-lg font-medium text-text">Content*</label>
-            <textarea name="content" id="content" class="mt-1 block w-full border rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500 text-acc"></textarea>
+            <textarea name="content" id="content" class="mt-1 block w-full border rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500 text-acc h-60"></textarea>
         </div>
 
         <div class="mb-4">
@@ -32,9 +32,9 @@
             <select name="category_id" id="category_id" class="mt-1 block w-full border rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500 text-acc">
                 <option value="">Choose the category</option>
                 @foreach($categories as $category)
-                <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
-                    {{ $category->name }}
-                </option>
+                    <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                        {{ $category->name }}
+                    </option>
                 @endforeach
             </select>
         </div>

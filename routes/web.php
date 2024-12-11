@@ -19,12 +19,10 @@ Route::get('/submit', [ArticleController::class, 'submitArticle'])->name('submit
 Route::get('/submit', [CategoryController::class, 'showCategory'])->name('show.category');
 Route::post('/submit/store', [ArticleController::class, 'storeArticle'])->name('store.article');
 
-// Route::get('/updatearticle/{article}',function(Article $article){
-//     return view('updatearticle',compact('article'));
-// })->name('update.article');
-
 Route::get('/article/{id}/edit', [ArticleController::class, 'edit']);
 Route::put('/article/{id}', [ArticleController::class, 'update']);
+
+Route::delete('/articles/delete/{id}', [ArticleController::class, 'destroy'])->name('articles.destroy');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

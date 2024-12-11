@@ -16,10 +16,11 @@
                         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                             Homepage
                         </x-nav-link>
-                        <x-nav-link :href="route('show.articles')" :active="request()->routeIs('show.articles')">
-                            Articles
-                        </x-nav-link>
                     @endauth
+                    <x-nav-link :href="route('show.articles')" :active="request()->routeIs('show.articles')">
+                        Articles
+                    </x-nav-link>
+
                 </div>
             </div>
 

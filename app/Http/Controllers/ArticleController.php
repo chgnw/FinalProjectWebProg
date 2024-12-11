@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
+use App\Models\Category;
+
 
 class ArticleController extends Controller
 {
@@ -24,7 +26,9 @@ class ArticleController extends Controller
     }
 
     public function submitArticle() {
-        return view('submit');
+        $categories = Category::all();
+
+        return view('submit', ['categories' => $categories]);
     }
 
     public function storeArticle(Request $request) {
@@ -63,59 +67,30 @@ class ArticleController extends Controller
         return view('articleDetail', ['article' => $article]);
     }
 
-    public function storeUpdatedArticle(Request $request, Article $article){
-        $request->validate([
-            'title'=>'required',
-            'short_desc'=>'required',
-            'picture'=>'nullable|image|mimes:jpeg,jpg,png,bmp,gif,svg',
-            'content'=>'required',
-            'author_id'=>'required',
-            'category_id'=>'required'
-        ]
-        );
-        $article->title=$request->title;
-        $article->short_desc=$request->short_desc;
-        $article->content=$request->content;
-        $article->author_id=$request->author_id;
-        $article->category_id=$request->category_id;
-
-
-        if($request->picture!=null){
-            Storage::disk('public')->delete($article->picture);
-            $article->picture= $request->picture->store('images','public');
-        }
-
-        $article->save();
-        return redirect()->route('home')->with('success','Article Berhasil Di Update');
-    }
-
     public function edit($id) {
         $article = Article::findOrFail($id);
+        $categories = Category::all();
 
-        return view('update', compact('article'));
+        return view('update', compact('article', 'categories'));
     }
 
     public function update(Request $request, $id) {
-        // Validate the incoming data
         $request->validate([
             'title' => 'required|string|max:255',
             'desc' => 'required|string|max:500',
             'content' => 'required|string',
             'author' => 'required|string',
             'category_id' => 'required|exists:categories,id',
-            'photo' => 'nullable|image|max:5120', // Photo optional buat update
+            'photo' => 'nullable|image|max:5120',
         ]);
 
         $article = Article::findOrFail($id);
-
-        // Update the article with the new data
         $article->title = $request->title;
         $article->desc = $request->desc;
         $article->content = $request->content;
         $article->author = $request->author;
         $article->category_id = $request->category_id;
 
-        // If a new photo is uploaded, update it
         if ($request->hasFile('photo')) {
             $photoPath = $request->file('photo')->store('articleImage', 'public');
             $article->photo = $photoPath;
@@ -123,7 +98,14 @@ class ArticleController extends Controller
 
         $article->save();
 
-        return redirect()->route('/article/{{ $article->id }}/edit')->with('success', 'Article updated successfully!');
+        return redirect('/article/' . $article->id . '/edit')->with('success', 'Article updated successfully!');
     }
 
+    public function destroy($id) {
+        $article = Article::findOrFail($id);
+
+        $article->delete();
+
+        return redirect()->route('dashboard')->with('success', 'Article deleted successfully');
+    }
 }

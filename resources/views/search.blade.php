@@ -17,7 +17,7 @@
                     @foreach ($articles as $article)
                         <div class="max-w-lg rounded-lg shadow bg-gray-800 border-gray-700">
                             <a href="#" class="max-w-xl">
-                                <img class="rounded-t-lg w-full h-72" src="{{ asset('images/' . $article->photo) }}" alt="" />
+                                <img class="rounded-t-lg w-full h-72" src="{{ asset('storage/' . $article->photo) }}" alt="" />
                             </a>
                             <div class="p-5">
                                 <a href="#">
@@ -30,6 +30,21 @@
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                                     </svg>
                                 </a>
+
+                                @auth
+                                    <a href="/article/{{ $article->id }}/edit">
+                                        <button  class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-gray-200 bg-gray-500 mt-2 rounded-lg hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:focus:ring-gray-700 transition">
+                                            Update
+                                        </button>
+                                    </a>
+                                    <form action="/articles/delete/{{ $article->id }}" method="POST" class="inline-block">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-gray-200 bg-red-500 mt-2 rounded-lg hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:focus:ring-gray-700 transition">
+                                            Delete
+                                        </button>
+                                    </form>
+                                @endauth
                             </div>
                         </div>
                     @endforeach

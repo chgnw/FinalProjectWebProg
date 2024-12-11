@@ -8,7 +8,7 @@
         </div>
 
         <div class="flex items-center justify-center">
-            <img src="{{ asset('images/' . $article->photo) }}" alt="" class="w-[600px]">
+            <img src="{{ asset('storage/' . $article->photo) }}" alt="" class="w-[600px]">
         </div>
 
         <p class="text-justify text-xl indent-8">

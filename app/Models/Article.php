@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Article extends Model
 {
-    protected $fillable=['title','desc','picture','content','author_id','category_id'];
+    protected $fillable=['title','desc','photo','content','author','category_id'];
 
     public function category()
     {
