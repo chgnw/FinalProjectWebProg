@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}" class="text-xl font-bold">
-                        BRAND
+                        Learnticle
                     </a>
                 </div>
 
@@ -19,21 +19,20 @@
                         <x-nav-link :href="route('show.articles')" :active="request()->routeIs('show.articles')">
                             Articles
                         </x-nav-link>
-                        <x-nav-link :href="route('show.authors')" :active="request()->routeIs('show.authors')">
-                            Authors
-                        </x-nav-link>
                     @endauth
                 </div>
             </div>
 
             {{-- Search Form --}}
-            <form action="{{ route('search.article') }}" method="GET" class="hidden md:flex items-center space-x-2">
+            <form action="/search" method="GET" class="hidden md:flex items-center space-x-2">
                 <input
                 type="text"
                 name="data"
                 placeholder="Search articles"
                 class="rounded-md border border-secondary bg-secondary text-bg px-3 py-1 focus:outline-none focus:ring focus:ring-secondary">
-                <button type="submit" class="text-text bg-secondary px-3 py-1 rounded-md hover:bg-gray-700">Q</button>
+                <button type="submit" class="text-text bg-secondary px-3 py-1 rounded-md hover:bg-gray-700">
+                    <img src="/images/loupe.png" alt="" class="w-4 h-4">
+                </button>
             </form>
 
             <!-- Login and Register Links (Right of the Search Bar) -->
