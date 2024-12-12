@@ -10,9 +10,9 @@
     @else
         <div class="grid grid-cols-2 gap-4">
             @foreach ($articles as $article)
-                <div class="max-w-2xl rounded-lg shadow px-4 py-2 bg-acc">
+                <div class="max-w-2xl rounded-lg shadow p-2 bg-acc">
                     <div class="">
-                        <img src="{{ asset('storage/' . $article->photo) }}" alt="{{ $article->title }}" class="w-full h-[400px]">
+                        <img src="{{ asset('storage/' . $article->photo) }}" alt="{{ $article->title }}" class="w-full h-[400px] rounded-md">
                     </div>
 
                     <div class="p-4">
@@ -45,6 +45,9 @@
                     </div>
                 </div>
             @endforeach
+        </div>
+        <div class="mt-6">
+            {{ $articles->links('pagination::tailwind') }}
         </div>
     @endif
 

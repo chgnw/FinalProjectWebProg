@@ -7,13 +7,15 @@
                 Welcome to Learnticle
             </h1>
             <p class="mb-8 text-lg font-normal lg:text-xl sm:px-16 lg:px-48 text-text">We compile all the education-related articles, so that you can find it easily.</p>
-            <div class="space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
-                <a
-                href="/submit"
-                class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-indigo-600 hover:bg-indigo-800">
-                    Submit your article
-                </a>
-            </div>
+            @auth
+                <div class="space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
+                    <a
+                    href="/submit"
+                    class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-indigo-600 hover:bg-indigo-800">
+                        Submit your article
+                    </a>
+                </div>
+            @endauth
         </div>
     </section>
 
